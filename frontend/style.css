@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 550px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e1e4e8;
+}
+
+.form-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    padding: 25px;
+    text-align: center;
+}
+
+.form-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.form-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.container input, .container textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid #ccd1d9;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    color: #333;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.container input:focus, .container textarea:focus {
+    border-color: #2a5298;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+}
+
+.container textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 350px;
+}
+
+.container input::placeholder, .container textarea::placeholder {
+    color: #a0aec0;
+    font-size: 15px;
+}
+
+.container button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #2a5298;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.container button:hover {
+    background-color: #1e3c72;
+}
+
+.container button:active {
+    transform: scale(0.99);
+}

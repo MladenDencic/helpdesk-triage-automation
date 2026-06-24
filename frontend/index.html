@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Data to Python</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-header">
+            <h2>Helpdesk Triage Automation</h2>
+        </div>
+        
+        <div class="form-body">
+            <input type="text" id="userInput1" placeholder="Ime">
+            <input type="text" id="userInput2" placeholder="Mail">
+            <textarea id="userInput3" placeholder="Poruka"></textarea>
+            <button id="sendBtn">Send Data</button>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('sendBtn').addEventListener('click', async () => {
+            // 1. Grab the data from the HTML input
+            const name = document.getElementById('userInput1').value;
+            const email = document.getElementById('userInput2').value;
+            const message = document.getElementById('userInput3').value;
+
+            const payload = {
+                name: name,
+                email: email,
+                message: message,
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                console.log('Response from Python:', result);
+                alert('Python says: ' + result.reply);
+
+            } catch (error) {
+                console.error('Error sending data:', error);
+            }
+        });
+    </script>
+</body>
+</html>
