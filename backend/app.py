@@ -11,9 +11,9 @@ import smtplib
 app = Flask(__name__)
 CORS(app)
 
-DB_FILE = 'data/database.json' 
+DB_FILE = 'data/database.json'
 
-load_dotenv() 
+load_dotenv()
 
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
@@ -43,7 +43,6 @@ def save_to_json_db(new_entry):
         json.dump(data_list, f, indent=4)
 
 def send_email_notification(ticket_data):
-    """Sends a formatted, professional HTML email containing ticket metrics and AI analysis."""
     msg = MIMEMultipart('alternative')
     msg['From'] = SENDER_EMAIL
     msg['To'] = RECEIVER_EMAIL
@@ -52,7 +51,6 @@ def send_email_notification(ticket_data):
     category = ticket_data['ai_analysis']['category']
     msg['Subject'] = f"[{priority.upper()}] New Support Ticket: {category}"
 
-    # Determine priority badge color dynamically
     badge_color = "#6c757d"  
     if priority.lower() == "urgent":
         badge_color = "#dc3545"  
@@ -63,10 +61,8 @@ def send_email_notification(ticket_data):
     elif priority.lower() == "low":
         badge_color = "#198754"  
 
-    # FIX: Process the line breaks HERE instead of inside the HTML template block
     formatted_reply = ticket_data['ai_analysis']['suggested_reply'].replace('\n', '<br>')
 
-    # Professional HTML Email Body Template
     html_body = f"""
     <!DOCTYPE html>
     <html>
